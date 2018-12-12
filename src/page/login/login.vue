@@ -20,6 +20,8 @@
 
 <script>
 
+import {login} from '@/api/api'
+
 export default {
   data () {
     return {
@@ -39,10 +41,10 @@ export default {
         that.$router.push({path: '/hello'})
       }, 1000)
 
-      // getSearchAddress('111').then(res => {
-      //   res.keyword = ''
-      //   // alert("dsds")
-      // })
+      login(this.username, this.password).then(res => {
+        console.error('登录失败')
+        // alert("dsds")
+      })
     }
   },
   computed: {
@@ -51,6 +53,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import '@style/mixin';
+
+  .loginButtonStyle {
+    font-size: 20px;
+    @include wh(100%,50px);
+  }
 
 </style>

@@ -4,9 +4,9 @@ import Vue from 'vue'
 
 Vue.use(VueRouter)
 
-const errPage = r => require.ensure([], () => r(require('../page/404/404')), '404')
-const login = r => require.ensure([], () => r(require('../page/login/login')), 'login')
-const hello = r => require.ensure([], () => r(require('../components/HelloWorld')), 'hello')
+const errPage = r => require.ensure([], () => r(require('@page/404/404')), '404')
+const login = r => require.ensure([], () => r(require('@page/login/login')), 'login')
+const hello = r => require.ensure([], () => r(require('@components/HelloWorld')), 'hello')
 
 // const hello = () => import(/* webpackChunkName: "hello" */ '../components/HelloWorld')
 
