@@ -20,13 +20,13 @@
 
 <script>
 
-import {login} from '@/api/api'
+import {login} from '@api/api'
 
 export default {
   data () {
     return {
       name: 'login',
-      username: '15578087453',
+      username: '15512345678',
       password: '',
       isLoading: false
     }
@@ -38,6 +38,7 @@ export default {
       setTimeout(function () {
         that.isLoading = false
         // alert("啥都没做");
+
         that.$router.push({path: '/hello'})
       }, 1000)
 
