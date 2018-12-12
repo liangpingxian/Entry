@@ -47,11 +47,11 @@ axios.interceptors.response.use(
 )
 
 export default function post (url, data) { // 默认 post
-  axios.post(url, data)
+  request('post', url, data)
 }
 
 export function request (method, url, data) { // 暴露 request 给我们好API 管理
-  method = method.toLocaleLowerCase() // 封装RESTful API的各种请求方式 以 post get delete为例
+  // method = method.toLocaleLowerCase() // 封装RESTful API的各种请求方式 以 post get delete为例
   if (method === 'post') {
     return axios.post(url, data) // axios的post 默认转化为json格式
   } else if (method === 'get') {
