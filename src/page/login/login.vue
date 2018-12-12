@@ -45,6 +45,8 @@ export default {
       login(this.username, this.password).then(res => {
         console.error('登录失败')
         // alert("dsds")
+      }).catch(error => {
+        console.error(error)
       })
     }
   },
