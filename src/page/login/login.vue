@@ -20,7 +20,7 @@
 
 <script>
 
-import {login} from '@api/api'
+import {login} from '@api/login'
 
 export default {
   data () {

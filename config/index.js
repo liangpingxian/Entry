@@ -10,7 +10,19 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/': {
+        target: 'https://en.enfry.com/', //你的目标域名和端口
+        changeOrigin: true,
+        pathRewrite: {
+          '^/': '/'
+        },
+        secure: false,
+        headers: {
+          Referer: 'https://xxx.com'
+        }
+      },
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
