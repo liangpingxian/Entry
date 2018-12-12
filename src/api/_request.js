@@ -36,6 +36,12 @@ axios.interceptors.response.use(
       res.msg = throwErr(error.response.status, error.response) // throwErr 捕捉服务端的http状态码 定义在utils工具类的方法
       return Promise.reject(res)
     }
+
+    Message({
+      message: error.message,
+      type: 'error'
+    })
+
     return Promise.reject(error)
   }
 )

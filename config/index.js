@@ -18,9 +18,9 @@ module.exports = {
           '^/': '/'
         },
         secure: false,
-        headers: {
-          Referer: 'https://xxx.com'
-        }
+        // headers: {
+        //   Referer: 'https://xxx.com'
+        // }
       },
     },
 
