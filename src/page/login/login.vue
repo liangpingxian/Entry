@@ -55,7 +55,6 @@ export default {
 
 <style lang="scss" scoped>
   @import '@style/mixin';
-
   .loginButtonStyle {
     font-size: 20px;
     @include wh(100%,50px);
