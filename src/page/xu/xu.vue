@@ -1,6 +1,8 @@
 <template>
   <div>
-    <el-container style="height: 1000px; border: 1px solid #eee">
+    <div> <h1 class="top">悬浮1</h1></div>
+    <div> <h1 class="bottom">悬浮2</h1></div>
+    <el-container style="height: 100%; border: 1px solid #eee">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
         <el-menu :default-openeds="['1', '3']">
           <el-submenu index="1">
@@ -73,9 +75,12 @@
             <el-table-column prop="address" label="地址">
             </el-table-column>
           </el-table>
-        </el-main>x
+        </el-main>
+        <el-footer>Footer</el-footer>
       </el-container>
+
     </el-container>
+
   </div>
 </template>
 
@@ -88,7 +93,7 @@ export default {
       address: '上海市普陀区金沙江路 1518 弄'
     }
     return {
-      tableData: Array(20).fill(item)
+      tableData: Array(30).fill(item)
     }
   }
 }
@@ -99,12 +104,23 @@ export default {
     background-color: #B3C0D1;
     color: #333;
     line-height: 60px;
-  },
+  }
   /** {*/
     /*padding:0 auto;*/
     /*margin:0 auto;*/
   /*}*/
-
+  .top{
+    position:fixed;
+    top:0px;
+    background-color: #B3C0D1;
+    z-index:100;
+  }
+  .bottom{
+    position:fixed;
+    bottom: 0px;
+    background-color: #B3C0D1;
+    z-index:100;
+  }
   .el-aside {
     color: #333;
   }
