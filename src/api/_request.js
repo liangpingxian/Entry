@@ -65,6 +65,10 @@ export function request (method, url, data) { // 暴露 request 给我们好API 
   }
 }
 
+export function requestMethods (methods) {
+  return axios.all(methods)
+}
+
 // axios捕错
 const throwErr = (code, response) => {
   let message = '请求错误'

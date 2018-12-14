@@ -4,8 +4,9 @@ import Vue from 'vue'
 
 Vue.use(VueRouter)
 
-const errPage = r => require.ensure([], () => r(require('@page/404/404')), '404')
+const errPage = r => require.ensure([], () => r(require('@page/errPage/errPage')), 'errPage')
 const login = r => require.ensure([], () => r(require('@page/login/login')), 'login')
+const xu = r => require.ensure([], () => r(require('@page/xu/xu')), 'xu')
 const hello = r => require.ensure([], () => r(require('@components/HelloWorld')), 'hello')
 
 // const hello = () => import(/* webpackChunkName: "hello" */ '../components/HelloWorld')
@@ -29,6 +30,11 @@ const routes = [{
       path: '/hello',
       component: hello
     },
+    // hello
+    {
+      path: '/xu',
+      component: xu
+    },
     // 404错误
     {
       path: '*',
@@ -38,4 +44,8 @@ const routes = [{
 
 export default new VueRouter({
   routes
+  // scrollBehavior (to, from, savedPosition) {
+  //   return { x: 0, y: 0 }
+  // }
+
 })
