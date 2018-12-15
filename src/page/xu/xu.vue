@@ -1,5 +1,13 @@
 <template>
   <div>
+    <p><strong>我是粗体字，不是斜体字，因为我不在列表当中，所以这个规则对我不起作用</strong></p>
+
+    <ol>
+      <li>我是斜体字。这是因为 <strong>strong 元素位于 li 元素内。</strong></li>
+      <li><strong>我是斜体字。这是因为 strong 元素位于 li 元素内。</strong></li>
+      <li>我是正常的字体。</li>
+    </ol>
+
     <div> <h1 class="top">悬浮1</h1></div>
     <div> <h1 class="bottom">悬浮2</h1></div>
     <el-container style="height: 100%; border: 1px solid #eee">
@@ -100,6 +108,11 @@ export default {
 </script>
 
 <style scoped>
+  li strong  {
+    font-style: italic;
+    font-weight: normal;
+    color: aquamarine;
+  }
   .el-header {
     background-color: #B3C0D1;
     color: #333;
