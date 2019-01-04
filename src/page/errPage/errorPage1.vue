@@ -1,6 +1,5 @@
 <template>
-<div>当前页面不存在</div>
-
+  <div style="height: 100%;font-size: 100px;margin-left: 500px">当前页面不存在 test </div>
 </template>
 
 <script>

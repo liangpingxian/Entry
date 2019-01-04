@@ -5,6 +5,7 @@ import Vue from 'vue'
 Vue.use(VueRouter)
 
 const errPage = r => require.ensure([], () => r(require('@page/errPage/errPage')), 'errPage')
+const errPage1 = r => require.ensure([], () => r(require('@page/errPage/errorPage1')), 'errPage1')
 const login = r => require.ensure([], () => r(require('@page/login/login')), 'login')
 const xu = r => require.ensure([], () => r(require('@page/xu/xu')), 'xu')
 const hello = r => require.ensure([], () => r(require('@components/HelloWorld')), 'hello')
@@ -33,7 +34,21 @@ const routes = [{
     // hello
     {
       path: '/xu',
-      component: xu
+      component: xu,
+      children: [
+        {
+          path: '/login',
+          component: login
+        },
+        {
+          path: '/error',
+          component: errPage
+        },
+        {
+          path: '/1',
+          component: errPage1
+        }
+      ]
     },
     // 404错误
     {
