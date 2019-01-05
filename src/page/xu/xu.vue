@@ -7,7 +7,9 @@
           <el-submenu :index="itemIndex" :key="itemIndex">
             <template slot="title">第{{item.name}}季</template>
             <el-menu-item-group v-for="(node,nodeIndex) in item.nodes" :key="node.$index">
-              <el-menu-item :index="itemIndex+'-'+nodeIndex">子项{{itemIndex}}-{{nodeIndex}}</el-menu-item>
+              <router-link to="/login1">
+                <el-menu-item :index="itemIndex+'-'+nodeIndex">子项{{itemIndex}}-{{nodeIndex}}</el-menu-item>
+              </router-link>
             </el-menu-item-group>
 
           </el-submenu>
