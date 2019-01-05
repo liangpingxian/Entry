@@ -1,31 +1,33 @@
 <template>
   <div>
-    <div style="float: left;background-color: aquamarine;position: fixed;width: 300px;height: 100%;">
-      <div style="height: 70px;text-align: center"><h1>left1</h1></div>
-      <el-menu style=" background-color: rgba(0,0,0,0) " default-active="1-1" >
-        <template v-for="(item,itemIndex) in menuList" >
-          <el-submenu :index="itemIndex" :key="itemIndex">
-            <template slot="title">第{{item.name}}季</template>
-            <el-menu-item-group v-for="(node,nodeIndex) in item.nodes" :key="node.$index">
-              <router-link to="/login1">
-                <el-menu-item :index="itemIndex+'-'+nodeIndex">子项{{itemIndex}}-{{nodeIndex}}</el-menu-item>
-              </router-link>
-            </el-menu-item-group>
+    <div style="float: left;margin-top:0px;background-color: aquamarine;position: fixed;width: 300px;height: 100%;">
+      <div style="height: 70px;background-color: beige;margin-top: 0px">left1</div>
+      <div style="overflow: scroll;height: 100%">
+          <el-menu style=" background-color: rgba(0,0,0,0);" default-active="1-1" >
+            <template v-for="(item,itemIndex) in menuList" >
+              <el-submenu :index="itemIndex" :key="itemIndex">
+                <template slot="title">第{{item.name}}季</template>
+                <el-menu-item-group v-for="(node,nodeIndex) in item.nodes" :key="node.$index">
+                  <router-link :to="{path:getRouterPath(itemIndex,nodeIndex),query:{id:Math.random()*100000000000}}">
+                    <el-menu-item :index="itemIndex+'-'+nodeIndex">子项{{itemIndex}}-{{nodeIndex}}</el-menu-item>
+                  </router-link>
+                </el-menu-item-group>
+              </el-submenu>
+            </template>
+          </el-menu>
+      </div>
 
-          </el-submenu>
-        </template>
-      </el-menu>
     </div>
-    <div style="background-color: #007aff;margin-left: 300px">
-      <div >right1</div>
-      <router-view >right2</router-view>
+    <div style="margin-left: 300px">
+      <div style="height: 70px;background-color: aquamarine">right1</div>
+        <router-view ></router-view>
     </div>
 
-    <div style="float: bottom">333333333333333333333333</div>
+    <!--<div style="float: bottom">333333333333333333333333</div>-->
 
     <!--<div> <h1 class="top">悬浮1</h1></div>-->
     <!--<div> <h1 class="bottom">悬浮2</h1></div>-->
-    <p v-for="item in menuList" :key="item">{{item.name.toString()+" 包含子项"+item.nodes.length}}</p>
+    <!--<p v-for="item in menuList" :key="item">{{item.name.toString()+" 包含子项"+item.nodes.length}}</p>-->
 
     <!--<el-container style="height: 1000px;">-->
       <!--<el-container>-->
@@ -173,11 +175,14 @@ export default {
     createMenuItem: function (text) {
       return {'name': text, 'nodes': []}
     },
+    getRouterPath: function (rowIndex, nodeIndex) {
+      if (nodeIndex === 0) { return 'detail' } else if (nodeIndex === 1) { return 'login' } else if (nodeIndex === 2) { return '404' } else if (nodeIndex === 3) { return 'errPage' } else return '401'
+    },
     requestMenuList: function () {
       // debugger
       if (this.menuList !== undefined) { return }
       let menuArray = []
-      for (let i = 0; i < Math.random() * 10 % 5; ++i) {
+      for (let i = 0; i < Math.random() * 10 % 5 + 1; ++i) {
         let item = this.createMenuItem(i)
 
         for (let j = 0; j < Math.random() * 10 % 10; ++j) {
@@ -227,9 +232,23 @@ export default {
     margin: 0px;
     height: 100%;
   }
-  .menu {
+  ::-webkit-scrollbar {
+    /*隐藏滚轮*/
+    display: none;
+  }
+
+  .menuTop {
+
+  }
+  .menuMain {
     width: 300px;
     height: 100%;
+  }
+  .mainTop {
+
+  }
+  .mainSection {
+
   }
 
 </style>

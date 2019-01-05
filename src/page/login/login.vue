@@ -1,6 +1,7 @@
 <template>
-  <div class="x">
+  <div class="loginStyle">
     <img src="@assets/logo.png"/>
+    <!--<img src="@assets/loginBg.jpg"/>-->
     <h1>登录界面</h1>
     <!--<input value="" placeholder="请输入手机号码/邮箱" class="loginButtonStyle"/>-->
     <el-form>
@@ -57,10 +58,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '@style/mixin';
+  @import '~@style/mixin';
   .loginButtonStyle {
     font-size: 20px;
     @include wh(100%,50px);
+  }
+  .loginStyle {
+    background:url("~@assets/loginBg.jpg") no-repeat;
+    overflow: auto;
+    background-size:cover;
+
+    height: 100vh;
+    /*height: 1000px;*/
   }
 
 </style>

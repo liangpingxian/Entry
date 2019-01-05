@@ -9,6 +9,7 @@ const errPage401 = r => require.ensure([], () => r(require('@page/errPage/401'))
 const errPage = r => require.ensure([], () => r(require('@page/errPage/errPage')), 'errPage')
 const login = r => require.ensure([], () => r(require('@page/login/login')), 'login')
 const xu = r => require.ensure([], () => r(require('@page/xu/xu')), 'xu')
+const detail = r => require.ensure([], () => r(require('@page/xu/detail')), 'xu')
 const hello = r => require.ensure([], () => r(require('@components/HelloWorld')), 'hello')
 
 // const hello = () => import(/* webpackChunkName: "hello" */ '../components/HelloWorld')
@@ -36,18 +37,31 @@ const routes = [{
     {
       path: '/xu',
       component: xu,
+      redirect: '/xu/detail',
       children: [
         {
-          path: '/login1',
+          path: 'detail',
+          component: detail
+        },
+        {
+          path: 'login',
           component: login
         },
         {
-          path: '/xu/error',
+          path: 'errPage',
           component: errPage
         },
         {
-          path: '/xu401',
+          path: '404',
+          component: errPage
+        },
+        {
+          path: '401',
           component: errPage401
+        },
+        {
+          path: '*',
+          component: errPage404
         }
       ]
     },
