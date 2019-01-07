@@ -37,7 +37,7 @@ export default {
   transform: translate(-50%,-50%);
   position: absolute;
   top: 40%;
-  left: 50%;
+  left: 60%;
 }
 .wscn-http404 {
   position: relative;

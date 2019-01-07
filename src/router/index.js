@@ -53,7 +53,7 @@ const routes = [{
         },
         {
           path: '404',
-          component: errPage
+          component: errPage404
         },
         {
           path: '401',

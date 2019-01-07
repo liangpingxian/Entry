@@ -20,7 +20,10 @@
     </div>
     <div style="margin-left: 300px">
       <div style="height: 70px;background-color: aquamarine">right1</div>
-        <router-view ></router-view>
+      <!--<router-view style="width: calc(100% - 300px);height: calc(100% - 70px)"></router-view>-->
+      <div style="background-color: #f1f1f1;margin: 0px;overflow:hidden;height: 100% ">
+        <router-view></router-view>
+      </div>
     </div>
 
     <!--<div style="float: bottom">333333333333333333333333</div>-->
@@ -199,7 +202,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+  $menuWith:300px;
+  $navHeight:70px;
+
+  .leftMenu {
+    float: left;
+    margin-top:0px;
+    background-color: aquamarine;
+    position: fixed;
+    width: 300px;height: 100%;
+  }
+  .rightMain {
+
+  }
   li strong  {
     font-style: italic;
     font-weight: normal;
@@ -235,6 +252,8 @@ export default {
   ::-webkit-scrollbar {
     /*隐藏滚轮*/
     display: none;
+    /*-webkit-margin-before: 0em;*/
+    /*-webkit-margin-after: 0em;*/
   }
 
   .menuTop {

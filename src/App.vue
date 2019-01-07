@@ -19,9 +19,10 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin: 0px;
+    height: 100%;
+    width: 100%;
   }
   body{
-    margin:0px auto;
-    padding:0px;
+    margin:0px;
   }
 </style>
