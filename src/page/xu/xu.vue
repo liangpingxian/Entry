@@ -79,13 +79,6 @@ export default {
   $menuWith:300px;
   $navHeight:70px;
 
-  ::-webkit-scrollbar {
-    /*隐藏滚轮*/
-    display: none;
-    /*-webkit-margin-before: 0em;*/
-    /*-webkit-margin-after: 0em;*/
-  }
-
   .menu-container {
     /*float: left;*/
     margin-top: 0px;
@@ -96,6 +89,8 @@ export default {
     left: 0;
     width: 300px !important;
     height: 100%;
+    z-index: 100001;
+    overflow: hidden;
 
     .menu-top-container {
       height: $navHeight;
@@ -111,26 +106,38 @@ export default {
 
     }
     .menu-bottom-container {
+      top: 0;
+      bottom: 0;
       overflow: scroll;
-      height: 100%;
+      height: calc(100vh - 70px);
       background-color: rgba(0,0,0,0);
     }
+    ::-webkit-scrollbar {
+      /*隐藏滚轮*/
+      display: none;
+      /*-webkit-margin-before: 0em;*/
+      /*-webkit-margin-after: 0em;*/
+    }
+
   }
 
   .main-container {
     margin-left: $menuWith;
+    position: relative;
+    min-height: 100%;
+
     .main-top-container {
       height: $navHeight;
       background-color: aquamarine;
     }
     .main-bottom-container {
+      overflow: auto;
       background-color: #f1f1f1;
-      margin: 0px;
-      overflow:hidden;
+      /*margin: 0px;*/
       min-height: calc(100vh - 70px);
-      position: relative;
+      max-height: calc(100vh - 70px);
       /*width: calc(100% - 300px);*/
-      /*height: calc(100% - 70px);*/
+      /*height: calc(100vh - 70px);*/
       .el-header {
         background-color: #B3C0D1;
         color: #333;

@@ -20,8 +20,8 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin: 0px;
-    height: 100%;
-    width: 100%;
+    /*height: 100%;*/
+    /*width: 100%;*/
   }
   body{
     margin:0px;
@@ -29,14 +29,14 @@ export default {
     overflow-y:hidden;
   }
   html {
-    height: 100%;
+    /*height: 100%;*/
     /*box-sizing:border-box;*/
     /*-moz-box-sizing:border-box; !* Firefox *!*/
     /*-webkit-box-sizing:border-box; !* Safari *!*/
   }
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
+  /**,*/
+  /**:before,*/
+  /**:after {*/
+    /*box-sizing: inherit;*/
+  /*}*/
 </style>
