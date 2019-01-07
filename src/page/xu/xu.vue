@@ -1,156 +1,28 @@
 <template>
   <div>
-    <div style="float: left;margin-top:0px;background-color: aquamarine;position: fixed;width: 300px;height: 100%;">
-      <div style="height: 70px;background-color: beige;margin-top: 0px">left1</div>
-      <div style="overflow: scroll;height: 100%">
-          <el-menu style=" background-color: rgba(0,0,0,0);" default-active="1-1" >
-            <template v-for="(item,itemIndex) in menuList" >
-              <el-submenu :index="itemIndex" :key="itemIndex">
-                <template slot="title">第{{item.name}}季</template>
-                <el-menu-item-group v-for="(node,nodeIndex) in item.nodes" :key="node.$index">
-                  <router-link :to="{path:getRouterPath(itemIndex,nodeIndex),query:{id:Math.random()*100000000000}}">
-                    <el-menu-item :index="itemIndex+'-'+nodeIndex">子项{{itemIndex}}-{{nodeIndex}}</el-menu-item>
-                  </router-link>
-                </el-menu-item-group>
-              </el-submenu>
-            </template>
-          </el-menu>
-      </div>
+    <div class="menu-container">
 
+      <div class="menu-top-container"><img class="logo-container" src="@assets/logo.png"/></div>
+      <el-menu class="menu-bottom-container" default-active="1-1" >
+        <template v-for="(item,itemIndex) in menuList" >
+          <el-submenu :index="itemIndex" :key="itemIndex">
+            <template slot="title">第{{item.name}}季</template>
+            <el-menu-item-group v-for="(node,nodeIndex) in item.nodes" :key="node.$index">
+              <router-link :to="{path:getRouterPath(itemIndex,nodeIndex),query:{id:Math.random()*100000000000}}">
+                <el-menu-item :index="itemIndex+'-'+nodeIndex">子项{{itemIndex}}-{{nodeIndex}}</el-menu-item>
+              </router-link>
+            </el-menu-item-group>
+          </el-submenu>
+        </template>
+      </el-menu>
     </div>
-    <div style="margin-left: 300px">
-      <div style="height: 70px;background-color: aquamarine">right1</div>
-      <!--<router-view style="width: calc(100% - 300px);height: calc(100% - 70px)"></router-view>-->
-      <div style="background-color: #f1f1f1;margin: 0px;overflow:hidden;height: 100% ">
+
+    <div class="main-container">
+      <div class="main-top-container">right1</div>
+      <section class="main-bottom-container">
         <router-view></router-view>
-      </div>
+      </section>
     </div>
-
-    <!--<div style="float: bottom">333333333333333333333333</div>-->
-
-    <!--<div> <h1 class="top">悬浮1</h1></div>-->
-    <!--<div> <h1 class="bottom">悬浮2</h1></div>-->
-    <!--<p v-for="item in menuList" :key="item">{{item.name.toString()+" 包含子项"+item.nodes.length}}</p>-->
-
-    <!--<el-container style="height: 1000px;">-->
-      <!--<el-container>-->
-        <!--<el-aside>-->
-          <!--<el-header>-->
-            <!--<p>dsafasda</p>-->
-
-            <!--<el-menu style="padding-bottom: 0px">-->
-              <!--<template v-for="item in menuList" >-->
-                <!--<el-submenu index="item.$index" :key="item.$index">-->
-                  <!--<template slot="title">{{item.name}}</template>-->
-                  <!--<el-menu-item-group v-for="node in item.nodes" :key="node.$index">-->
-                    <!--<el-menu-item>{{node.name}}</el-menu-item>-->
-                  <!--</el-menu-item-group>-->
-
-                <!--</el-submenu>-->
-              <!--</template>-->
-            <!--</el-menu>-->
-
-          <!--</el-header>-->
-
-        <!--</el-aside>-->
-
-        <!--<el-main>-->
-          <!--<el-menu style="padding-bottom: 0px">-->
-            <!--<template v-for="item in menuList" >-->
-              <!--<h1 :key="item.$index">{{item.name}}adsfsdafasdfasdfdsfsdafasdfd\nadfadsfasdfa\n<br/>sdafsdfasdfsdfaf<br/>sdafsdfasdfsdfaf</h1>-->
-              <!--<template v-for="node in item.nodes" >-->
-                <!--<h1 :key="node.$index">{{node.name}}adsfsdafasdfasdfdsfsdafasdfd\nadfadsfasdfa\n<br/>sdafsdfasdfsdfaf<br/>sdafsdfasdfsdfaf</h1>-->
-                <!--<h1 :key="node.$index">{{node.name}}adsfsdafasdfasdfdsfsdafasdfd\nadfadsfasdfa\n<br/>sdafsdfasdfsdfaf<br/>sdafsdfasdfsdfaf</h1>-->
-                <!--<h1 :key="node.$index">{{node.name}}adsfsdafasdfasdfdsfsdafasdfd\nadfadsfasdfa\n<br/>sdafsdfasdfsdfaf<br/>sdafsdfasdfsdfaf</h1>-->
-              <!--</template>-->
-            <!--</template>-->
-
-          <!--</el-menu>-->
-
-        <!--</el-main>-->
-
-      <!--</el-container>-->
-
-    <!--</el-container>-->
-
-    <!--<el-container style="height: 100%; border: 1px solid #eee">-->
-      <!--<el-aside width="200px" style="background-color: rgb(238, 241, 246)">-->
-        <!--<el-menu :default-openeds="['1', '3']">-->
-          <!--<el-submenu index="1">-->
-            <!--<template slot="title"><i class="el-icon-message"></i>导航一</template>-->
-            <!--<el-menu-item-group>-->
-              <!--<template slot="title">分组一</template>-->
-              <!--<el-menu-item index="1-1">选项1</el-menu-item>-->
-              <!--<el-menu-item index="1-2">选项2</el-menu-item>-->
-            <!--</el-menu-item-group>-->
-            <!--<el-menu-item-group title="分组2">-->
-              <!--<el-menu-item index="1-3">选项3</el-menu-item>-->
-            <!--</el-menu-item-group>-->
-            <!--<el-submenu index="1-4">-->
-              <!--<template slot="title">选项4</template>-->
-              <!--<el-menu-item index="1-4-1">选项4-1</el-menu-item>-->
-            <!--</el-submenu>-->
-          <!--</el-submenu>-->
-          <!--<el-submenu index="1">-->
-            <!--<template slot="title"><i class="el-icon-menu"></i>导航二</template>-->
-            <!--<el-menu-item-group>-->
-              <!--<template slot="title">分组一</template>-->
-              <!--<el-menu-item index="2-1">选项1</el-menu-item>-->
-              <!--<el-menu-item index="2-2">选项2</el-menu-item>-->
-            <!--</el-menu-item-group>-->
-            <!--<el-menu-item-group title="分组2">-->
-              <!--<el-menu-item index="2-3">选项3</el-menu-item>-->
-            <!--</el-menu-item-group>-->
-            <!--<el-submenu index="2-4">-->
-              <!--<template slot="title">选项4</template>-->
-              <!--<el-menu-item index="2-4-1">选项4-1</el-menu-item>-->
-            <!--</el-submenu>-->
-          <!--</el-submenu>-->
-          <!--<el-submenu index="3">-->
-            <!--<template slot="title"><i class="el-icon-setting"></i>导航三</template>-->
-            <!--<el-menu-item-group>-->
-              <!--<template slot="title">分组一</template>-->
-              <!--<el-menu-item index="3-1">选项1</el-menu-item>-->
-              <!--<el-menu-item index="3-2">选项2</el-menu-item>-->
-            <!--</el-menu-item-group>-->
-            <!--<el-menu-item-group title="分组2">-->
-              <!--<el-menu-item index="3-3">选项3</el-menu-item>-->
-            <!--</el-menu-item-group>-->
-            <!--<el-submenu index="3-4">-->
-              <!--<template slot="title">选项4</template>-->
-              <!--<el-menu-item index="3-4-1">选项4-1</el-menu-item>-->
-            <!--</el-submenu>-->
-          <!--</el-submenu>-->
-        <!--</el-menu>-->
-      <!--</el-aside>-->
-
-      <!--<el-container>-->
-        <!--<el-header style="text-align: right; font-size: 12px">-->
-          <!--<el-dropdown>-->
-            <!--<i class="el-icon-setting" style="margin-right: 15px"></i>-->
-            <!--<el-dropdown-menu slot="dropdown">-->
-              <!--<el-dropdown-item>查看</el-dropdown-item>-->
-              <!--<el-dropdown-item>新增</el-dropdown-item>-->
-              <!--<el-dropdown-item>删除</el-dropdown-item>-->
-            <!--</el-dropdown-menu>-->
-          <!--</el-dropdown>-->
-          <!--<span>王小虎</span>-->
-        <!--</el-header>-->
-
-        <!--<el-main>-->
-          <!--<el-table :data="tableData">-->
-            <!--<el-table-column prop="date" label="日期" width="140">-->
-            <!--</el-table-column>-->
-            <!--<el-table-column prop="name" label="姓名" width="120">-->
-            <!--</el-table-column>-->
-            <!--<el-table-column prop="address" label="地址">-->
-            <!--</el-table-column>-->
-          <!--</el-table>-->
-        <!--</el-main>-->
-        <!--<el-footer>Footer</el-footer>-->
-      <!--</el-container>-->
-
-    <!--</el-container>-->
 
   </div>
 </template>
@@ -207,48 +79,6 @@ export default {
   $menuWith:300px;
   $navHeight:70px;
 
-  .leftMenu {
-    float: left;
-    margin-top:0px;
-    background-color: aquamarine;
-    position: fixed;
-    width: 300px;height: 100%;
-  }
-  .rightMain {
-
-  }
-  li strong  {
-    font-style: italic;
-    font-weight: normal;
-    color: aquamarine;
-  }
-  .el-header {
-    background-color: #B3C0D1;
-    color: #333;
-    line-height: 60px;
-  }
-  /** {*/
-    /*padding:0 auto;*/
-    /*margin:0 auto;*/
-  /*}*/
-  .top{
-    position:fixed;
-    top:0px;
-    background-color: #B3C0D1;
-    z-index:100;
-  }
-  .bottom{
-    position:fixed;
-    bottom: 0px;
-    background-color: #B3C0D1;
-    z-index:100;
-  }
-  .el-aside {
-    color: #333;
-    padding: 0px;
-    margin: 0px;
-    height: 100%;
-  }
   ::-webkit-scrollbar {
     /*隐藏滚轮*/
     display: none;
@@ -256,18 +86,63 @@ export default {
     /*-webkit-margin-after: 0em;*/
   }
 
-  .menuTop {
-
-  }
-  .menuMain {
-    width: 300px;
+  .menu-container {
+    /*float: left;*/
+    margin-top: 0px;
+    background-color: aquamarine;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 300px !important;
     height: 100%;
-  }
-  .mainTop {
 
-  }
-  .mainSection {
+    .menu-top-container {
+      height: $navHeight;
+      background-color: beige;
+      margin-top: 0px;
 
+      .logo-container {
+        width: auto;
+        height: auto;
+        max-width: 90%;
+        max-height: 90%;
+      }
+
+    }
+    .menu-bottom-container {
+      overflow: scroll;
+      height: 100%;
+      background-color: rgba(0,0,0,0);
+    }
+  }
+
+  .main-container {
+    margin-left: $menuWith;
+    .main-top-container {
+      height: $navHeight;
+      background-color: aquamarine;
+    }
+    .main-bottom-container {
+      background-color: #f1f1f1;
+      margin: 0px;
+      overflow:hidden;
+      min-height: calc(100vh - 70px);
+      position: relative;
+      /*width: calc(100% - 300px);*/
+      /*height: calc(100% - 70px);*/
+      .el-header {
+        background-color: #B3C0D1;
+        color: #333;
+        line-height: 60px;
+      }
+      .el-aside {
+        color: #333;
+        padding: 0px;
+        margin: 0px;
+        height: 100%;
+      }
+    }
   }
 
 </style>

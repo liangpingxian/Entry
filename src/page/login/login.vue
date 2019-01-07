@@ -73,7 +73,7 @@ export default {
     @include wh($btnWith,45px);
   }
   .input {
-    //@include wh($btnWith,50px);
+    @include wh($btnWith,50px);
   }
   .logo {
     margin-top: -60px;
@@ -114,7 +114,6 @@ export default {
     overflow: auto;
     background-size:cover;
     position: absolute;
-    top: 0px;
     bottom: 0px;
     height: 100%;
     width: 100%;

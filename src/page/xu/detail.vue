@@ -17,9 +17,11 @@ export default {
 
   .mainContainer {
     border-radius: 10px;
-    background-color: #FFFFFF;
+    background-color: #FFFFF1;
     margin: 8px;
     padding: 8px 8px 37px 8px;
+    height: 100%;
+    overflow: hidden;
   }
   .sepLine {
     background-color: #F5F5F5;

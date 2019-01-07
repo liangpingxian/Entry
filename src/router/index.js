@@ -66,6 +66,10 @@ const routes = [{
       ]
     },
     {
+      path: '/detail',
+      component: detail
+    },
+    {
       path: '/401',
       component: errPage401
     },
