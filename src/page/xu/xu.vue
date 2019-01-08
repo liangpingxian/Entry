@@ -1,27 +1,36 @@
 <template>
-  <div>
+  <div class=".container">
     <div class="menu-container">
 
       <div class="menu-top-container"><img class="logo-container" src="@assets/logo.png"/></div>
       <el-menu class="menu-bottom-container" default-active="1-1" >
         <template v-for="(item,itemIndex) in menuList" >
           <el-submenu :index="itemIndex" :key="itemIndex">
-            <template slot="title">第{{item.name}}季</template>
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>第{{item.name}}季</span>
+            </template>
             <el-menu-item-group v-for="(node,nodeIndex) in item.nodes" :key="node.$index">
               <router-link :to="{path:getRouterPath(itemIndex,nodeIndex),query:{id:Math.random()*100000000000}}">
-                <el-menu-item :index="itemIndex+'-'+nodeIndex">子项{{itemIndex}}-{{nodeIndex}}</el-menu-item>
+                <el-menu-item :index="itemIndex+'-'+nodeIndex">
+                  <i class="el-icon-document"></i>
+                  <span>子项{{itemIndex}}-{{nodeIndex}}</span>
+                </el-menu-item>
               </router-link>
             </el-menu-item-group>
           </el-submenu>
         </template>
       </el-menu>
     </div>
-
     <div class="main-container">
       <div class="main-top-container">right1</div>
-      <section class="main-bottom-container">
-        <router-view></router-view>
-      </section>
+      <div class="main-bottom-container">
+        <div class="router-view-container">
+          <router-view class=""></router-view>
+        </div>
+
+      </div>
+
     </div>
 
   </div>
@@ -79,17 +88,19 @@ export default {
   $menuWith:300px;
   $navHeight:70px;
 
+  .container {
+    overflow: hidden;
+    /*position: relative;*/
+    height: 100%;
+  }
+
   .menu-container {
-    /*float: left;*/
+    top: 0px;
     margin-top: 0px;
     background-color: aquamarine;
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
     width: 300px !important;
-    height: 100%;
-    z-index: 100001;
+    z-index: 99999;
     overflow: hidden;
 
     .menu-top-container {
@@ -108,10 +119,12 @@ export default {
     .menu-bottom-container {
       top: 0;
       bottom: 0;
-      overflow: scroll;
-      height: calc(100vh - 70px);
+      overflow: auto;
+      text-align: left;
+      height: calc(100vh - #{$navHeight});
       background-color: rgba(0,0,0,0);
     }
+
     ::-webkit-scrollbar {
       /*隐藏滚轮*/
       display: none;
@@ -123,32 +136,27 @@ export default {
 
   .main-container {
     margin-left: $menuWith;
-    position: relative;
-    min-height: 100%;
-
+    height: auto;
+    overflow: hidden;
     .main-top-container {
+      position: relative;
       height: $navHeight;
+      width: 100%;
       background-color: aquamarine;
+      z-index: 11;
+      box-shadow: 0px 0px 5px #888888;/*四边出现阴影，效果发光*/
     }
     .main-bottom-container {
-      overflow: auto;
+      overflow: hidden;
       background-color: #f1f1f1;
-      /*margin: 0px;*/
-      min-height: calc(100vh - 70px);
-      max-height: calc(100vh - 70px);
-      /*width: calc(100% - 300px);*/
-      /*height: calc(100vh - 70px);*/
-      .el-header {
-        background-color: #B3C0D1;
-        color: #333;
-        line-height: 60px;
-      }
-      .el-aside {
-        color: #333;
-        padding: 0px;
-        margin: 0px;
+      height: calc(100vh - #{$navHeight});
+      position: relative;
+      top: 0;
+      .router-view-container {
         height: 100%;
+        overflow: auto;
       }
+
     }
   }
 

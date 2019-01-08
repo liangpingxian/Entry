@@ -23,10 +23,14 @@ export default {
     /*height: 100%;*/
     /*width: 100%;*/
   }
+  a {
+    text-decoration: none;
+  }
   body{
     margin:0px;
-    height: 100%;
-    overflow-y:hidden;
+    /*height: 100%;*/
+    /*overflow-y:auto;*/
+    /*overflow: hidden;*/
   }
   html {
     /*height: 100%;*/

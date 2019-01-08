@@ -1,5 +1,5 @@
 <template>
-  <div class="loginContainer">
+  <div class="login-container">
 
     <!--<input value="" placeholder="请输入手机号码/邮箱" class="loginButtonStyle"/>-->
     <!--<p class="divLeft">en+智能财务<br/>最大化企业数据价值</p>-->
@@ -21,7 +21,7 @@
     </el-form>
 
   <div>
-    <p class="bottomInfo">湖南英富莱网络技术有限公司 <br/>@2019 Enfry Ltd.All rights reserved. 湘ICP16017875号</p>
+    <p class="bottom-info">湖南英富莱网络技术有限公司 <br/>@2019 Enfry Ltd.All rights reserved. 湘ICP16017875号</p>
   </div>
   </div>
 </template>
@@ -82,7 +82,7 @@ export default {
     background-color: white;
     box-shadow: 0px 0px 100px #888888;/*四边出现阴影，效果发光*/
   }
-  .divLeft {
+  .div-left {
     font-size: 50px;
     color: #ffffff;
     /*float: left;*/
@@ -103,13 +103,13 @@ export default {
     box-shadow: 0px 0px 100px #888888;/*四边出现阴影，效果发光*/
 
   }
-  .bottomInfo {
+  .bottom-info {
     position: absolute;
     bottom: 30px;
 
     width: 100%;
   }
-  .loginContainer {
+  .login-container {
     background:url("~@assets/loginBg.jpg") 50% 50% no-repeat;
     overflow: auto;
     background-size:cover;
