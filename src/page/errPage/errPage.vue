@@ -1,5 +1,5 @@
 <template>
-<div>当前页面不存在</div>
+<div style="position: absolute;top: 40%;left: 30%;font-size: 100px">当前页面不存在</div>
 
 </template>
 

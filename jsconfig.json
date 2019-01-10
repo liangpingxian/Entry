@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@api": ["@/api"],
+      "@assets": ["@/assets"],
+    },
+    "target": "ES6",
+    "allowSyntheticDefaultImports": true
+  },
+  
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
+}

@@ -17,7 +17,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    text-align: center;
+    /*text-align: center;*/
     color: #2c3e50;
     margin: 0px;
     /*height: 100%;*/

@@ -1,8 +1,9 @@
 <template>
   <div class=".container">
     <div class="menu-container">
-
+      <!--菜单顶部图标-->
       <div class="menu-top-container"><img class="logo-container" src="@assets/logo.png"/></div>
+      <!--左侧菜单-->
       <el-menu class="menu-bottom-container" default-active="1-1" >
         <template v-for="(item,itemIndex) in menuList" >
           <el-submenu :index="itemIndex" :key="itemIndex">
@@ -23,7 +24,27 @@
       </el-menu>
     </div>
     <div class="main-container">
-      <div class="main-top-container">right1</div>
+      <!--顶部区域-->
+      <div class="main-top-container">
+        <div class="div-right">
+          <el-input suffix-icon="el-icon-search" placeholder="请输入关键字" class="search-style"></el-input>
+          <img src="@assets/logo.png" class="userlogo-style"/>
+          <el-dropdown>
+            <span class="userinfo-style" trigger="click">
+                  徐大大<i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>黄金糕</el-dropdown-item>
+              <el-dropdown-item>狮子头</el-dropdown-item>
+              <el-dropdown-item>螺蛳粉</el-dropdown-item>
+              <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+              <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+
+      </div>
+      <!--主区域-->
       <div class="main-bottom-container">
         <div class="router-view-container">
           <router-view class=""></router-view>
@@ -37,9 +58,12 @@
 </template>
 
 <script>
-// import {requestMethods} from '@/api/_request'
+// import {requestMethods} from '@api/_request'
+// import errPageVue from '@/page/errPage/errPage.vue';
+// import { request } from '@/api/_request';
 
 export default {
+
   data () {
     const item = {
       date: '2016-05-02',
@@ -73,7 +97,6 @@ export default {
           let nodeItem = this.createMenuItem(j)
           item.nodes.push(nodeItem)
         }
-
         menuArray.push(item)
       }
       this.menuList = menuArray
@@ -82,6 +105,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+
+  .search-style {
+    $height:30px;
+    height: $height;
+    .el-input__inner {
+      height: 100%;
+    }
+    .el-input__icon {
+      line-height: 100%;
+    }
+  }
+
+</style>
 
 <style lang="scss" scoped>
 
@@ -94,20 +132,18 @@ export default {
     height: 100%;
   }
 
-  .menu-container {
+ .menu-container {
     top: 0px;
     margin-top: 0px;
-    background-color: aquamarine;
+    background-color: lavenderblush;
     position: fixed;
     width: 300px !important;
     z-index: 99999;
     overflow: hidden;
-
     .menu-top-container {
       height: $navHeight;
       background-color: beige;
       margin-top: 0px;
-
       .logo-container {
         width: auto;
         height: auto;
@@ -138,13 +174,41 @@ export default {
     margin-left: $menuWith;
     height: auto;
     overflow: hidden;
+    min-width: 500px;
     .main-top-container {
       position: relative;
       height: $navHeight;
       width: 100%;
-      background-color: aquamarine;
+      background-color: white;
       z-index: 11;
       box-shadow: 0px 0px 5px #888888;/*四边出现阴影，效果发光*/
+      .div-right {
+        float: right;
+        height: 100%;
+        margin: 0 auto 0 0;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content:center;
+        align-items:center;
+        .search-style {
+          width: 300px;
+          margin: auto 20px;
+          float: left;
+          position: relative;
+
+        }
+        .userlogo-style {
+          margin-left: auto;
+          max-width: 50%;
+          max-height: 50%;
+          width: auto;
+          height: auto;
+        }
+        .userinfo-style {
+          color: blue;
+          margin: 0 20px 0 5px;
+        }
+      }
     }
     .main-bottom-container {
       overflow: hidden;

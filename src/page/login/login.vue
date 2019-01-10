@@ -4,17 +4,20 @@
     <!--<input value="" placeholder="请输入手机号码/邮箱" class="loginButtonStyle"/>-->
     <!--<p class="divLeft">en+智能财务<br/>最大化企业数据价值</p>-->
     <el-form>
-       <img class="logo" src="@assets/logo.png"/>
+      <div class="logo-title-container">
+        <img class="logo-container" src="@/assets/logo.png"/>
         <!--<img src="@assets/loginBg.jpg"/>-->
-        <p style="margin-bottom: 30px;font-size: 12px; font-weight: bold;">en+接口平台</p>
+        <p class="title-container">en+接口平台</p>
+      </div>
+
         <el-form-item prop="username">
-          <el-input class="input" prefix-icon="el-icon-search" type="text" v-model="username" auto-complete="off" placeholder="请输入手机号码/邮箱" :disabled="isLoading" autofocus=true>
+          <el-input class="input-style" prefix-icon="el-icon-search" type="text" v-model="username" auto-complete="on" placeholder="请输入手机号码/邮箱" :disabled="isLoading" autofocus=true>
             <i slot="suffix" class="el-input__icon el-icon-date"></i>
           </el-input>
         </el-form-item>
 
         <el-form-item prop="password">
-          <el-input class="input" prefix-icon="el-icon-search" type="password" v-model="password" auto-complete="off" placeholder="请输入密码" :disabled="isLoading"></el-input>
+          <el-input class="input-style" prefix-icon="el-icon-search" type="password" v-model="password" auto-complete="off" placeholder="请输入密码" :disabled="isLoading"></el-input>
         </el-form-item>
 
         <el-button type="primary"  @click="loginAction" :loading="isLoading" class="loginButtonStyle">登  录</el-button>
@@ -64,31 +67,49 @@ export default {
 }
 </script>
 
+<style lang="scss">
+  .input-style {
+    .el-input__inner {
+      height: 100%;
+    }
+  }
+</style>
+
 <style lang="scss" scoped>
   $btnWith:450px;
+  $btnHeight: 40px;
   @import '~@style/mixin';
   .loginButtonStyle {
     font-size: 14px;
     margin-bottom: 65px;
-    @include wh($btnWith,45px);
+    @include wh($btnWith,$btnHeight);
   }
-  .input {
-    @include wh($btnWith,50px);
+
+  .logo-title-container {
+    $logoSize:100px;
+    text-align: center;
+
+    .logo-container {
+      //margin-top: -60px;
+      @include wh($logoSize,$logoSize);
+      border-radius: $logoSize/2;
+      background-color: white;
+      margin: -$logoSize*0.6 auto 0 auto;
+      box-shadow: 0px 0px 100px #888888;/*四边出现阴影，效果发光*/
+    }
+    .title-container {
+      margin: 10px auto 30px auto;
+      font-size: 12px;
+      font-weight: bold;
+    }
   }
-  .logo {
-    margin-top: -60px;
-    @include wh(100px,100px);
-    border-radius: 50px;
-    background-color: white;
-    box-shadow: 0px 0px 100px #888888;/*四边出现阴影，效果发光*/
-  }
+
   .div-left {
     font-size: 50px;
     color: #ffffff;
     /*float: left;*/
     left: 0px;
     position: absolute;
-
   }
   .el-form {
     /*vertical-align: center;*/
@@ -106,7 +127,7 @@ export default {
   .bottom-info {
     position: absolute;
     bottom: 30px;
-
+    text-align: center;
     width: 100%;
   }
   .login-container {
@@ -120,6 +141,9 @@ export default {
     /*width: calc(100% - 300px);*/
     /*height: calc(100% - 70px)*/
     /*height: 1000px;*/
+    .input-style {
+      @include wh($btnWith,$btnHeight);
+    }
   }
 
 </style>

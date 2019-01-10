@@ -119,10 +119,22 @@ export default {
     .sepLineStyle {
       background-color: #F5F5F5;
       height: 1px;
+
     }
     .section-container {
       font-size: 12px;
       /*background-color: #007aff;*/
+      ::first-letter {
+        font-weight: bold;
+      }
+      p::before {
+        color: #007aff;
+        content: '\260E';
+      }
+      ::selection {
+        background-color: aqua;
+      }
+
     }
   }
 
