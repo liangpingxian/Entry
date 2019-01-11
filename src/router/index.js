@@ -4,6 +4,7 @@ import Vue from 'vue'
 
 Vue.use(VueRouter)
 
+const newInterface = r => require.ensure([], () => r(require('@/page/yuan/NewInterface')), 'hello')
 const errPage404 = r => require.ensure([], () => r(require('@page/errPage/404')), 'errPage')
 const errPage401 = r => require.ensure([], () => r(require('@page/errPage/401')), 'errPage')
 const errPage = r => require.ensure([], () => r(require('@page/errPage/errPage')), 'errPage')
@@ -32,6 +33,10 @@ const routes = [{
     {
       path: '/hello',
       component: hello
+    },
+    {
+      path: 'yuan',
+      component: newInterface
     },
     // hello
     {
