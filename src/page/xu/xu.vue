@@ -2,7 +2,10 @@
   <div class=".container">
     <div class="menu-container">
       <!--菜单顶部图标-->
-      <div class="menu-top-container"><img class="logo-container" src="@assets/logo.png"/></div>
+      <div class="menu-top-container">
+        <img class="logo-container" src="@assets/login/logo.png"/>
+        <span>en+接口平台</span>
+      </div>
       <!--左侧菜单-->
       <el-menu class="menu-bottom-container" default-active="1-1" >
         <template v-for="(item,itemIndex) in menuList" >
@@ -28,7 +31,7 @@
       <div class="main-top-container">
         <div class="div-right">
           <el-input suffix-icon="el-icon-search" placeholder="请输入关键字" class="search-style"></el-input>
-          <img src="@assets/logo.png" class="userlogo-style"/>
+          <img src="@assets/login/logo.png" class="userlogo-style"/>
           <el-dropdown>
             <span class="userinfo-style" trigger="click">
                   徐大大<i class="el-icon-arrow-down el-icon--right"></i>
@@ -51,7 +54,6 @@
         </div>
 
       </div>
-
     </div>
 
   </div>
@@ -61,6 +63,7 @@
 // import {requestMethods} from '@api/_request'
 // import errPageVue from '@/page/errPage/errPage.vue';
 // import { request } from '@/api/_request';
+import LoginComments from '@/page/login/login'
 
 export default {
 
@@ -75,6 +78,9 @@ export default {
       tableData: Array(5).fill(item),
       menuList: undefined
     }
+  },
+  components: {
+    'v-login': LoginComments
   },
   created () {
     this.requestMenuList()
@@ -144,6 +150,8 @@ export default {
       height: $navHeight;
       background-color: beige;
       margin-top: 0px;
+      text-align: center;
+      display: flex;
       .logo-container {
         width: auto;
         height: auto;

@@ -39,7 +39,8 @@ axios.interceptors.response.use(
 
     Message({
       message: error.message,
-      type: 'error'
+      type: 'error',
+      showClose: true
     })
 
     return Promise.reject(error)

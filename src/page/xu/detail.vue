@@ -3,7 +3,7 @@
 
     <p>行程单详情</p>
     <div class="sepLineStyle"></div>
-    <div v-for="item in dataSource" :key="item.index" class="section-container">
+    <div v-for="item in dataSource" :key="item.index" class="section-container" type="1">
       <p>{{item.name}}</p>
       <div v-if="item.index == 0">
         <span>接口说明啊  我是说明接口说明我是说明我是说明接口说明我是说明我是说明接口说明我是说明我是说明接口说明我是说明</span>
@@ -127,15 +127,24 @@ export default {
       ::first-letter {
         font-weight: bold;
       }
+
       p::before {
         color: #007aff;
         content: '\260E';
       }
       ::selection {
         background-color: aqua;
+
       }
 
     }
   }
+  /*begin*/
+
+  //.....ss.s.s..s.s.s.
+
+  /*.section-container[type='21'] {*/
+      /*background-color: #007aff;*/
+  /*}*/
 
 </style>

@@ -5,19 +5,19 @@
     <!--<p class="divLeft">en+智能财务<br/>最大化企业数据价值</p>-->
     <el-form>
       <div class="logo-title-container">
-        <img class="logo-container" src="@/assets/logo.png"/>
-        <!--<img src="@assets/loginBg.jpg"/>-->
+        <img class="logo-container" src="@/assets/login/logo.png"/>
+        <!--<img src="@assets/login/loginBg.jpg"/>-->
         <p class="title-container">en+接口平台</p>
       </div>
 
         <el-form-item prop="username">
-          <el-input class="input-style" prefix-icon="el-icon-search" type="text" v-model="username" auto-complete="on" placeholder="请输入手机号码/邮箱" :disabled="isLoading" autofocus=true>
+          <el-input class="input-style" prefix-icon="input-username-icon" type="text" v-model="username" name="username" autocomplete="on" placeholder="请输入手机号码/邮箱" :disabled="isLoading" autofocus=true>
             <i slot="suffix" class="el-input__icon el-icon-date"></i>
           </el-input>
         </el-form-item>
 
         <el-form-item prop="password">
-          <el-input class="input-style" prefix-icon="el-icon-search" type="password" v-model="password" auto-complete="off" placeholder="请输入密码" :disabled="isLoading"></el-input>
+          <el-input class="input-style" prefix-icon="input-password-icon" type="password" v-model="password" autocomplete="off" placeholder="请输入密码" :disabled="isLoading"></el-input>
         </el-form-item>
 
         <el-button type="primary"  @click="loginAction" :loading="isLoading" class="loginButtonStyle">登  录</el-button>
@@ -72,12 +72,49 @@ export default {
     .el-input__inner {
       height: 100%;
     }
+
+    $background-size:16px 18px;
+    $font-size:30px;
+    //宏
+    @mixin common-icon($iconName) {
+      background: url("~@assets/login/#{$iconName}.png") 50% 50% no-repeat;
+      background-size: $background-size;
+      font-size: $font-size;
+      &::before {
+        content: "\e611";
+        visibility: hidden;
+      }
+    }
+
+    .input-username-icon {
+      @include common-icon("denglu-zhanghao");
+    }
+    .input-password-icon {
+      @include common-icon("denglu-mima");
+    }
+
+    /*
+    //继承(慎用)
+    %common-icon1 {
+      background: url("~@assets/login/denglu-mima.png") center no-repeat;
+      background-size: $background-size;
+      font-size: $font-size;
+      &::before {
+        content: "\e611";
+        visibility: hidden;
+      }
+    }
+    .input-password-icon1 {
+      @extend %common-icon1;
+    }
+    */
   }
 </style>
 
 <style lang="scss" scoped>
   $btnWith:450px;
   $btnHeight: 40px;
+
   @import '~@style/mixin';
   .loginButtonStyle {
     font-size: 14px;
@@ -131,7 +168,7 @@ export default {
     width: 100%;
   }
   .login-container {
-    background:url("~@assets/loginBg.jpg") 50% 50% no-repeat;
+    background:url("~@assets/login/loginBg.jpg") 50% 50% no-repeat;
     overflow: auto;
     background-size:cover;
     position: absolute;
