@@ -10,7 +10,9 @@
         </div>
         <div class="text-bottom">
           <ul>
-            <li v-for="item in logData.logContents">{{item}}</li>
+            <template v-for="(item,index) in logData.logContents" >
+              <li :key="index">{{item}}</li>
+            </template>
           </ul>
         </div>
       </div>
@@ -20,28 +22,27 @@
     <div class="logcell-bottom-line" v-show="!logData.isLastData"></div>
   </div>
 
-
 </template>
 
 <script>
-    export default {
-        name: "LogCell",
+export default {
+  name: 'LogCell',
 
-        props: {
-          logData: {
-            type: Object,
-            // 对象或数组默认值必须从一个工厂函数获取
-            default: function () {
-              return {
-                logTitle: '版本信息',
-                logTime: '更新时间',
-                isLastData: true,
-                logContents: []
-              }
-            }
-          }
+  props: {
+    logData: {
+      type: Object,
+      // 对象或数组默认值必须从一个工厂函数获取
+      default: function () {
+        return {
+          logTitle: '版本信息',
+          logTime: '更新时间',
+          isLastData: true,
+          logContents: []
         }
+      }
     }
+  }
+}
 </script>
 
 <style lang="scss">

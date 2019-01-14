@@ -16,7 +16,6 @@
         width="240">
       </el-table-column>
 
-
       <el-table-column
         prop="descText"
         label="说明">
@@ -38,7 +37,6 @@
         width="240">
       </el-table-column>
 
-
       <el-table-column
         prop="descText"
         label="说明">
@@ -52,37 +50,37 @@
 
 <script>
 
-  import PageHead from "../LeftSide/PageHead";
-    export default {
-      name: "GeneralParameter",
-      components: {PageHead},
+import PageHead from '../../hu/components/PageHead'
+export default {
+  name: 'GeneralParameter',
+  components: {PageHead},
 
-      data() {
-        return {
-          tableData: [{
-            param: 'id',
-            type: 'string',
-            isMust: '是',
-            descText: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            param: 'name',
-            type: 'string',
-            isMust: '是',
-            descText: '上海市普陀区金沙江路 1517 弄'
-          }, {
-            param: 'pageNo',
-            type: 'int',
-            isMust: '否',
-            descText: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            param: 'pageSize',
-            type: 'int',
-            isMust: '否',
-            descText: '上海市普陀区金沙江路 1516 弄'
-          }]
-        }
-      }
+  data () {
+    return {
+      tableData: [{
+        param: 'id',
+        type: 'string',
+        isMust: '是',
+        descText: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        param: 'name',
+        type: 'string',
+        isMust: '是',
+        descText: '上海市普陀区金沙江路 1517 弄'
+      }, {
+        param: 'pageNo',
+        type: 'int',
+        isMust: '否',
+        descText: '上海市普陀区金沙江路 1519 弄'
+      }, {
+        param: 'pageSize',
+        type: 'int',
+        isMust: '否',
+        descText: '上海市普陀区金沙江路 1516 弄'
+      }]
     }
+  }
+}
 </script>
 
 <style lang="scss">

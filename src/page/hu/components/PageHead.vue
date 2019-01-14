@@ -9,11 +9,11 @@
 </template>
 
 <script>
-    export default {
-        name: "PageHead",
+export default {
+  name: 'PageHead',
 
-        props: ['title']
-    }
+  props: ['title']
+}
 
 </script>
 

@@ -1,6 +1,5 @@
 <template>
 
-
   <div class="interface-container">
 
     <el-button class="right-button" size="mini" @click="pushToSummary">更新日志</el-button>
@@ -105,99 +104,97 @@
 
   </div>
 
-
 </template>
 
 <script>
-  import PageHead from "../LeftSide/PageHead";
-    export default {
-        name: "InterfaceDetail",
-      components: {PageHead},
-      data() {
-        var descAreaText = '海市普陀区金沙江路上市普陀区金沙江普陀区金沙江路上海市路123';
-        for (var i = 0; i < 10; i++)
+import PageHead from '../../hu/components/PageHead'
+export default {
+  name: 'InterfaceDetail',
+  components: {PageHead},
+  data () {
+    var descAreaText = '海市普陀区金沙江路上市普陀区金沙江普陀区金沙江路上海市路123'
+    for (var i = 0; i < 10; i++) {
+      descAreaText = descAreaText + descAreaText
+    }
+    return {
+      textarea: descAreaText,
+      tableData: [{
+        param: 'id',
+        type: 'string',
+        isMust: '是',
+        descText: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        param: 'name',
+        type: 'string',
+        isMust: '是',
+        descText: '上海市普陀区金沙江路 1517 弄'
+      }, {
+        param: 'pageNo',
+        type: 'int',
+        isMust: '否',
+        descText: '上海市普陀区金沙江路 1519 弄'
+      }, {
+        param: 'pageSize',
+        type: 'int',
+        isMust: '否',
+        descText: '上海市普陀区金沙江路 1516 弄'
+      }],
+
+      openeds: ['1', '2'],
+      selectMainId: 'summary',
+      menuData: [
         {
-          descAreaText = descAreaText + descAreaText;
+          mainId: 'start',
+          mainTitle: '开始',
+          itemArray: [
+            {
+              subId: 'summary',
+              subName: '概述'
+            },
+            {
+              subId: 'updateLog',
+              subName: '更新日志'
+            },
+            {
+              subId: 'generalParameter',
+              subName: '通用参数说明'
+            },
+            {
+              subId: 'errorCode',
+              subName: '全局错误码'
+            }
+          ]
+        },
+        {
+          mainId: 'interfaceDetail',
+          mainTitle: '接口分类',
+          itemArray: [
+            {
+              subId: '121',
+              subName: '接口A'
+            },
+            {
+              subId: '122',
+              subName: '接口B'
+            },
+            {
+              subId: '123',
+              subName: '接口C'
+            }
+          ]
         }
-        return {
-          textarea: descAreaText,
-          tableData: [{
-            param: 'id',
-            type: 'string',
-            isMust: '是',
-            descText: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            param: 'name',
-            type: 'string',
-            isMust: '是',
-            descText: '上海市普陀区金沙江路 1517 弄'
-          }, {
-            param: 'pageNo',
-            type: 'int',
-            isMust: '否',
-            descText: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            param: 'pageSize',
-            type: 'int',
-            isMust: '否',
-            descText: '上海市普陀区金沙江路 1516 弄'
-          }],
+      ],
 
-          openeds: ['1','2'],
-          selectMainId: 'summary',
-          menuData: [
-            {
-              mainId: 'start',
-              mainTitle: '开始',
-              itemArray: [
-                {
-                  subId: 'summary',
-                  subName: '概述'
-                },
-                {
-                  subId: 'updateLog',
-                  subName: '更新日志'
-                },
-                {
-                  subId: 'generalParameter',
-                  subName: '通用参数说明'
-                },
-                {
-                  subId: 'errorCode',
-                  subName: '全局错误码'
-                }
-              ]
-            },
-            {
-              mainId: 'interfaceDetail',
-              mainTitle: '接口分类',
-              itemArray: [
-                {
-                  subId: '121',
-                  subName: '接口A'
-                },
-                {
-                  subId: '122',
-                  subName: '接口B'
-                },
-                {
-                  subId: '123',
-                  subName: '接口C'
-                }
-              ]
-            },
-          ],
+      data: {
 
-          data: {
-
-          },
-          defaultProps: {
-            children: 'children',
-            label: 'label'
-          }
-        };
+      },
+      defaultProps: {
+        children: 'children',
+        label: 'label'
       }
     }
+  }
+}
 </script>
 
 <style lang="scss">
@@ -225,8 +222,6 @@
       margin-right: 20px;
       margin-top: 8px;
       font-size: 14px;
-
-
 
       .el-textarea__inner {
         padding: 5px 5px 5px 8px;
