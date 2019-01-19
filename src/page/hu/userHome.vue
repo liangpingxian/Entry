@@ -5,7 +5,7 @@
     <el-aside width="280px">
       <div class="left-header">
         <img class="logo" src="../../assets/total/logo.png" @click="pushToLogin()">
-        <span class="leftTitle">en+接口平台</span>
+        <span class="leftTitle" @click="pushToSummary()">en+接口平台</span>
       </div>
       <left-menu></left-menu>
     </el-aside>
