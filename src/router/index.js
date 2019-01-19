@@ -58,6 +58,10 @@ const routes = [{
           component: updateLog
         },
         {
+          path: 'yuan',
+          component: newInterface
+        },
+        {
           path: 'versionComparison',
           component: versionComparison
         },

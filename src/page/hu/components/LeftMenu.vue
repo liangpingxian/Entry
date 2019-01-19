@@ -82,6 +82,14 @@ export default {
             },
             {
               id: '1-5',
+              subId: 'yuan',
+              subName: '新增接口',
+              subIcon: require('../../../assets/total/yewujianmo.png'),
+              subIcon1: require('../../../assets/total/yewujianmo拷贝.png'),
+              isSelect: false
+            },
+            {
+              id: '1-6',
               subId: 'versionComparison',
               subName: '接口版本对比',
               subIcon: require('../../../assets/total/yewujianmo.png'),
@@ -144,7 +152,6 @@ export default {
       this.$router.push({path: '/login'})
     },
     menuClick (mainId, subId, menuData, item) {
-      debugger
       this.initDataSelect(menuData)
 
       item.isSelect = true
