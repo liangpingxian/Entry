@@ -1,10 +1,11 @@
 import VueRouter from 'vue-router'
 import App from '@/App'
 import Vue from 'vue'
+// const userHome = r => require.ensure([], () => r(require('@page/hu/UserHome')), 'userHome')
 
 Vue.use(VueRouter)
 
-const newInterface = r => require.ensure([], () => r(require('@/page/yuan/NewInterface')), 'hello')
+const newInterface = r => require.ensure([], () => r(require('@/page/yuan/NewInterface')), 'newInterface')
 const errPage404 = r => require.ensure([], () => r(require('@page/errPage/404')), 'errPage')
 const errPage401 = r => require.ensure([], () => r(require('@page/errPage/401')), 'errPage')
 const errPage = r => require.ensure([], () => r(require('@page/errPage/errPage')), 'errPage')
@@ -12,8 +13,13 @@ const login = r => require.ensure([], () => r(require('@page/login/login')), 'lo
 const xu = r => require.ensure([], () => r(require('@page/xu/xu')), 'xu')
 const detail = r => require.ensure([], () => r(require('@page/xu/detail')), 'xu')
 const hello = r => require.ensure([], () => r(require('@components/HelloWorld')), 'hello')
-
-// const hello = () => import(/* webpackChunkName: "hello" */ '../components/HelloWorld')
+const userHome = r => require.ensure([], () => r(require('@page/hu/userHome')), 'userHome')
+const errorCode = r => require.ensure([], () => r(require('@page/hu/subPage/ErrorCode')), 'errorCode')
+const generalParameter = r => require.ensure([], () => r(require('@page/hu/subPage/GeneralParameter')), 'generalParameter')
+const summary = r => require.ensure([], () => r(require('@page/hu/subPage/Summary')), 'summary')
+const updateLog = r => require.ensure([], () => r(require('@page/hu/subPage/UpdateLog')), 'updateLog')
+const versionComparison = r => require.ensure([], () => r(require('@page/hu/subPage/VersionComparison')), 'versionComparison')
+const interfaceDetail = r => require.ensure([], () => r(require('@page/hu/subPage/InterfaceDetail')), 'interfaceDetail')
 
 const routes = [{
   path: '/',
@@ -28,6 +34,43 @@ const routes = [{
     {
       path: '/login',
       component: login
+    },
+    // 主页面
+    {
+      path: '/userHome',
+      component: userHome,
+      redirect: '/userHome/summary',
+      children: [
+        {
+          path: 'summary',
+          component: summary
+        },
+        {
+          path: 'errorCode',
+          component: errorCode
+        },
+        {
+          path: 'generalParameter',
+          component: generalParameter
+        },
+        {
+          path: 'updateLog',
+          component: updateLog
+        },
+        {
+          path: 'yuan',
+          component: newInterface
+        },
+        {
+          path: 'versionComparison',
+          component: versionComparison
+        },
+        {
+          name: '接口',
+          path: 'interfaceDetail',
+          component: interfaceDetail
+        }
+      ]
     },
     // hello
     {

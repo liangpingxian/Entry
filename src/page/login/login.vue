@@ -50,7 +50,7 @@ export default {
         that.isLoading = false
         // alert("啥都没做");
 
-        that.$router.push({path: '/hello'})
+        that.$router.push({path: '/userHome'})
       }, 1000)
 
       login(this.username, this.password).then(res => {
