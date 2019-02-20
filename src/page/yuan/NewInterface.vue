@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="container">
-        <div class="base-form">
+        <div id="form">
           <el-form ref="editForm" :model="data" label-width="100px" label-position="left" size="mini">
             <span class="title"><b>基本信息</b></span>
 
@@ -37,15 +37,15 @@
                 <el-option label="业务建模" value="yewujianmo"></el-option>
               </el-select>
             </el-form-item>
-            <el-form-item label="接口说明" class="textarea">
+            <el-form-item label="接口说明" class="textarea" style="width: 100%;">
               <el-input type="textarea" :autosize="{ minRows: 1, maxRows: 20}" placeholder="请输入" v-model="data.instructions">
               </el-input>
             </el-form-item>
-            <el-form-item label="注意事项" class="textarea">
+            <el-form-item style="width: 100%;" label="注意事项" class="textarea">
               <el-input type="textarea" :autosize="{ minRows: 1, maxRows: 20}" placeholder="请输入" v-model="data.attention">
               </el-input>
             </el-form-item>
-            <el-form-item label="接口地址">
+            <el-form-item style="width: 100%;" label="接口地址">
               <el-input v-model="data.address" placeholder="请输入"></el-input>
             </el-form-item>
             <el-form-item label="接口类型">
@@ -60,13 +60,51 @@
 
             <span class="title"><b>请求参数</b></span>
 
-            <tree-table :data="data.requestParameters" :columns="columns" style="width: 100%" size="mini" border>
+            <tree-table :data="data.requestParameters.data" :columns="columns" style="width: 100%" size="mini" border>
             </tree-table>
-          </el-form>
+            <el-form-item label="返回结果" class="el-form-item-margin-top" style="width: 100%;">
+              <el-select v-model="data.requestParameters.result" placeholder="请选择" style="width: 50%;">
+                <el-option label="12312312" value="shoye"></el-option>
+                <el-option label="321312321" value="yewujianmo"></el-option>
+              </el-select>
+            </el-form-item>
 
+            <el-form-item style="width: 100%;">
+              <el-input type="textarea" :autosize="{ minRows: 1, maxRows: 20}" placeholder="请输入" v-model="data.requestParameters.content">
+              </el-input>
+            </el-form-item>
+
+            <div class="line"></div>
+            <span class="title"><b>返回字段说明</b></span>
+            <tree-table :data="data.returnFieldInstructions.data" :columns="returnColumns" style="width: 100%" size="mini"
+              border>
+            </tree-table>
+
+            <div class="line"></div>
+            <span class="title"><b>内链</b></span>
+            <tree-table :data="data.internalChain.data" :columns="internalChainColumns" style="width: 100%" size="mini"
+              border>
+            </tree-table>
+
+            <el-form-item label="通知人" class="el-form-item-margin-top">
+              <el-select v-model="data.internalChain.notifier" placeholder="请选择">
+                <el-option label="李" value="li"></el-option>
+                <el-option label="荒" value="huang"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-form>
         </div>
       </div>
     </div>
+    <div class="submitButtons clearfix">
+      <el-button>保存</el-button>
+      <el-button type="primary">提交</el-button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
   </div>
 </template>
 
@@ -86,8 +124,7 @@ export default {
         label: '参数',
         width: '230',
         minWidth: '150'
-      },
-      {
+      }, {
         type: 'select',
         placeholder: '请选择',
         prop: 'type',
@@ -127,28 +164,76 @@ export default {
         type: 'input',
         placeholder: '请输入',
         prop: 'explain',
-        label: '说明'
+        label: '说明',
+        minWidth: '150'
       }
       ],
-      fieldTypeOptions: [{
-        label: 'Array',
-        value: 'Array'
+      returnColumns: [{
+        type: 'input',
+        placeholder: '请输入',
+        prop: 'name',
+        label: '返回值字段',
+        width: '230',
+        minWidth: '150'
       },
       {
-        label: 'Number',
-        value: 'Number'
+        type: 'select',
+        placeholder: '请选择',
+        prop: 'type',
+        label: '类型',
+        width: '230',
+        minWidth: '150',
+        options: [{
+          label: 'Array',
+          value: 'Array'
+        },
+        {
+          label: 'Number',
+          value: 'Number'
+        },
+        {
+          label: 'String',
+          value: 'String'
+        },
+        {
+          label: 'null',
+          value: 'null'
+        },
+        {
+          label: 'undefined',
+          value: 'undefined'
+        }
+        ]
       },
       {
-        label: 'String',
-        value: 'String'
+        type: 'input',
+        prop: 'explain',
+        label: '字段说明',
+        width: '230',
+        minWidth: '150'
       },
       {
-        label: 'null',
-        value: 'null'
+        type: 'input',
+        placeholder: '请输入',
+        prop: 'remark',
+        label: '备注',
+        minWidth: '150'
+      }
+      ],
+      internalChainColumns: [{
+        type: 'input',
+        placeholder: '请输入',
+        prop: 'name',
+        label: '内链名称',
+        width: '230',
+        minWidth: '150'
       },
       {
-        label: 'undefined',
-        value: 'undefined'
+        type: 'select',
+        placeholder: '请选择',
+        prop: 'address',
+        label: '内链地址',
+        minWidth: '150'
       }
       ],
       space: 10,
@@ -159,13 +244,36 @@ export default {
         attention: '修改需要备注',
         address: null,
         type: 'post',
-        requestParameters: [{
-          name: 'id',
-          type: 'array',
-          required: true,
-          explain: '唯一id',
-          children: []
-        }]
+        requestParameters: {
+          data: [{
+            name: 'id',
+            type: 'array',
+            required: true,
+            explain: '唯一id',
+            children: []
+          }],
+          result: {
+            type: 'Json',
+            content: ''
+          }
+        },
+        returnFieldInstructions: {
+          data: [{
+            name: 'id',
+            type: null,
+            explain: '唯一id',
+            remark: null,
+            children: []
+          }]
+        },
+        internalChain: {
+          data: [{
+            name: 'id',
+            address: null,
+            children: []
+          }],
+          notifier: null
+        }
       }
     }
   },
@@ -174,6 +282,9 @@ export default {
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
+
+  $space-width: 15px;
+
   .clearfix::before,
   .clearfix::after {
     content: '';
@@ -210,7 +321,7 @@ export default {
   .main {
     background-color: white;
     margin: 10px;
-    padding: 0 15px 0;
+    padding: 0 $space-width 1px;
 
     .container span {
       display: block;
@@ -251,10 +362,6 @@ export default {
     }
   }
 
-  .container {
-    height: 500px;
-  }
-
   .el-form-item {
     margin-bottom: 10px;
   }
@@ -263,26 +370,14 @@ export default {
     border-bottom: 1px solid #eff0f2;
   }
 
-  $space-width: 18px;
-
-  .ms-tree-space {
-    top: 1px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-    height: 14px;
-    width: $space-width;
-
-    &::before {
-      content: '';
-    }
-
-    background-color: red;
+  .el-form-item-margin-top {
+    margin-top: 20px;
+  }
+  .submitButtons {
+    float: right;
+    margin-right: $space-width;
   }
 
-  .ms-tree-content {
-    margin-left: 20px;
-  }
 </style>
 
 <style>
@@ -295,7 +390,7 @@ export default {
     width: 50%;
   }
 
-  .el-form-item .el-form {
+  .el-form {
     width: 100%;
   }
 
@@ -307,5 +402,13 @@ export default {
 
   .el-table-column {
     background-color: red;
+  }
+
+  .el-form-item--mini {
+    min-height: 30px;
+  }
+
+  .el-table-item--mini {
+    min-height: 30px;
   }
 </style>

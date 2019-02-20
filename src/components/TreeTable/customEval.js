@@ -24,7 +24,6 @@ export default function treeToArray (data, expandAll, parent, level, item) {
       if (!marLTemp[_level]) {
         marLTemp[_level] = 0
       }
-      Vue.set(record, '_marginLeft', marLTemp[_level] * 15)
       // Vue.set(record, '_width', record[item] / parent[item] * parent._width)
       // 在本次计算过偏移量后加上自己长度，以供下一个元素使用
       marLTemp[_level] += record._width
@@ -35,7 +34,6 @@ export default function treeToArray (data, expandAll, parent, level, item) {
       // map中是一个数组，存储的是每级的长度和
       // 初始情况下为0
       marLTemp[record.id][_level] = 0
-      Vue.set(record, '_marginLeft', 0)
       Vue.set(record, '_width', 1)
     }
     tmp.push(record)

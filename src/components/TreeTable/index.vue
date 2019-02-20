@@ -5,15 +5,15 @@
       :min-width="column.minWidth" :prop="column.prop">
       <template slot-scope="scope">
         <div :style="treeIndex === index ? ('padding-left:'+ (scope.row._level -1) * indentationWidth +'px;') : ''">
-          <el-input placeholder="请输入" v-model="scope.row[column.prop]" v-if="column.type === 'input'" class="table-column-edit">
+          <el-input size="mini" placeholder="请输入" v-model="scope.row[column.prop]" v-if="column.type === 'input'" class="table-column-edit">
           </el-input>
-          <el-select v-model="
+          <el-select size="mini" v-model="
             scope.row[column.prop]" placeholder="请选择" v-else-if="column.type === 'select'"
             class="table-column-edit">
             <el-option v-for="option in column.options" :key="option.value" :lable="option.label" :value="option.value">
             </el-option>
           </el-select>
-          <el-checkbox v-model="scope.row[column.prop]" v-else-if="column.type === 'checkbox'"></el-checkbox>
+          <el-checkbox size="mini" v-model="scope.row[column.prop]" v-else-if="column.type === 'checkbox'"></el-checkbox>
           <!-- <span
             v-if="column.type !== 'checkbox'"
             class="table-column-view"
@@ -23,11 +23,13 @@
         </div>
       </template>
     </el-table-column>
-    <el-table-column prop="operate" label="操作" min-width="200" v-if="isEdit == true">
+    <el-table-column prop="operate" label="操作" min-width="100" width="150" v-if="isEdit == true">
       <template slot-scope="scope">
-        <el-button size="mini" @click="handleAdd(scope.$index, scope.row)" class="table-column-view">添加</el-button>
-        <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)" class="table-column-view">删除</el-button>
-        <el-button size="mini" @click="handleAddSub(scope.$index, scope.row)" class="table-column-view">添加子项</el-button>
+        <el-button size="mini" @click="handleAdd(scope.$index, scope.row)" class="table-column-view button-add" circle></el-button>
+        <el-button size="mini" @click="handleDelete(scope.$index, scope.row)" class="table-column-view button-delete"
+          circle></el-button>
+        <el-button v-if="scope.row._level < maxLevel" size="mini" @click="handleAddSub(scope.$index, scope.row)" class="table-column-view button-add-sub"
+          circle></el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -69,6 +71,10 @@ export default {
         type: Number,
         default: 0
       },
+      maxLevel: {
+        type: Number,
+        default: 8
+      },
       indentationWidth: {
         type: Number,
         default: 10
@@ -85,8 +91,7 @@ export default {
         }
         const func = this.evalFunc;
         const args = this.evalArgs ?
-          Array.concat([tmp, this.expandAll], this.evalArgs) :
-          [tmp, this.expandAll];
+          Array.concat([tmp, this.expandAll], this.evalArgs) : [tmp, this.expandAll];
         return func.apply(null, args);
       }
     },
@@ -157,6 +162,8 @@ export default {
       opacity: 1;
     }
   }
+
+
 </style>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
@@ -168,4 +175,29 @@ export default {
   //   display: inline-block;
   //   display: none;
   // }
+
+  // .el-icon-my-export:before{
+  //     content: "替";
+  //     font-size: 16px;
+  //     visibility: hidden;
+  // }
+  @mixin button-icon($icon) {
+    background: url($icon) center no-repeat;
+    background-size: cover;
+  }
+  .button-add {
+    @include button-icon("xinzeng.png");
+  }
+
+  .button-delete {
+    @include button-icon("shanchu.png");
+  }
+
+  .button-add-sub {
+    @include button-icon("jiaxiaji.png");
+  }
+  .el-select {
+    width: 100%;
+  }
+  
 </style>
